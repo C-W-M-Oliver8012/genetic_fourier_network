@@ -80,7 +80,7 @@ pub fn feedforward(fourier_node: &FourierNode, input: f64) -> f64 {
         output += fourier_node.cos[i - 1] * sin_cos_values.1;
     }
 
-    output
+    (output.min(fourier_node.l)).max(fourier_node.l * -1.0)
 }
 
 pub fn add(a: &FourierNode, b: &FourierNode) -> FourierNode {
